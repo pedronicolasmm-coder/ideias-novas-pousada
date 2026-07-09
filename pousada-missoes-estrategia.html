@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estratégia 2025 — Pousada das Missões</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap');
+
+  :root {
+    --laranja: #E07B20;
+    --verde: #1A6B2F;
+    --marrom: #5C3A1E;
+    --dourado: #F5A623;
+    --creme: #FDF8F2;
+    --escuro: #1A1208;
+    --cinza: #6B6560;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--escuro);
+    color: var(--creme);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--escuro) 0%, #2C1810 50%, #1A2E12 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(224,123,32,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--laranja);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 10vw, 110px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 span {
+    color: var(--laranja);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: clamp(15px, 2.5vw, 19px);
+    color: rgba(253,248,242,0.6);
+    max-width: 520px;
+    line-height: 1.6;
+    margin-top: 24px;
+    font-weight: 600;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--dourado);
+    margin: 32px auto;
+  }
+
+  /* INSIGHT */
+  .insight {
+    background: #0F0A05;
+    padding: 80px 24px;
+    border-top: 1px solid rgba(224,123,32,0.2);
+  }
+
+  .insight-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--laranja);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .alerta {
+    background: rgba(224,123,32,0.1);
+    border: 1px solid rgba(224,123,32,0.3);
+    border-left: 4px solid var(--laranja);
+    padding: 24px 28px;
+    border-radius: 4px;
+    text-align: left;
+  }
+
+  .alerta strong {
+    color: var(--dourado);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .alerta p {
+    font-size: 16px;
+    color: var(--creme);
+    line-height: 1.7;
+    font-weight: 600;
+  }
+
+  /* CAMADAS */
+  .secao {
+    padding: 80px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .secao-header {
+    margin-bottom: 48px;
+  }
+
+  .secao-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1;
+    color: var(--creme);
+    margin-bottom: 8px;
+  }
+
+  .secao-header p {
+    font-size: 15px;
+    color: rgba(253,248,242,0.55);
+    font-weight: 600;
+  }
+
+  .cards {
+    display: grid;
+    gap: 16px;
+  }
+
+  .card {
+    background: #1C1208;
+    border: 1px solid rgba(253,248,242,0.08);
+    border-radius: 6px;
+    padding: 28px 32px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover {
+    border-color: rgba(224,123,32,0.4);
+  }
+
+  .card-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  .tag-urgente { background: rgba(224,123,32,0.15); color: var(--laranja); }
+  .tag-insight { background: rgba(245,166,35,0.15); color: var(--dourado); }
+  .tag-receita { background: rgba(26,107,47,0.2); color: #4CAF72; }
+  .tag-produto { background: rgba(92,58,30,0.3); color: #C4915A; }
+  .tag-digital { background: rgba(30,60,100,0.3); color: #6BA3E0; }
+
+  .card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    color: var(--creme);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(253,248,242,0.6);
+    font-weight: 600;
+  }
+
+  .card-destaque {
+    border-color: rgba(245,166,35,0.3);
+    background: linear-gradient(135deg, #1C1208, #1A2010);
+  }
+
+  .card-destaque::before {
+    content: '★ DADO DA GERENTE';
+    position: absolute;
+    top: -1px;
+    right: 20px;
+    background: var(--dourado);
+    color: var(--escuro);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .sep {
+    border: none;
+    border-top: 1px solid rgba(253,248,242,0.06);
+    margin: 0;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 60px 24px;
+    text-align: center;
+    background: #0A0603;
+    border-top: 1px solid rgba(224,123,32,0.2);
+  }
+
+  .footer h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    margin-bottom: 12px;
+  }
+
+  .footer p {
+    font-size: 15px;
+    color: rgba(253,248,242,0.5);
+    font-weight: 600;
+    max-width: 480px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+
+  .footer-logo {
+    margin-top: 48px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: rgba(253,248,242,0.2);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 600px) {
+    .card { padding: 20px; }
+    .secao { padding: 56px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Apresentação estratégica — confidencial</div>
+  <h1>Pousada<span>das Missões</span></h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">Oportunidades identificadas para crescer a ocupação e aumentar o ticket médio.</p>
+</section>
+
+<!-- INSIGHT DA GERENTE -->
+<section class="insight">
+  <div class="insight-inner">
+    <span class="label">Dado importante</span>
+    <div class="alerta">
+      <strong>Dado da gerente Sandra</strong>
+      <p>As pessoas perguntam muito sobre passeios. Elas querem algo completo, resolvido. A pousada tem uma oportunidade de se posicionar como quem resolve isso — e ainda não está explorando.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- CAMADA 1 -->
+<section class="secao">
+  <div class="secao-header">
+    <span class="label">Equipe</span>
+    <h2>Treinar para atender melhor</h2>
+    <p>O Zé já identificou isso. Uma equipe bem treinada converte mais e gera melhor experiência para o hóspede.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <span class="card-tag tag-urgente">Oportunidade</span>
+      <h3>Script de atendimento no WhatsApp</h3>
+      <p>Definir quem responde, em quanto tempo e com qual texto. Um script com variações de abertura padroniza o atendimento e aumenta a conversão sem gastar mais em anúncio.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-urgente">Oportunidade</span>
+      <h3>Qualificar antes de dar preço</h3>
+      <p>Perguntar "pra quando você tá pensando?" e "vem em casal ou família?" antes de falar valor aquece o lead e aumenta percepção de valor. Pequena mudança, grande diferença na conversa.</p>
+    </div>
+    <div class="card card-destaque">
+      <span class="card-tag tag-insight">Insight da gerente</span>
+      <h3>Resposta padrão para "quais passeios tem?"</h3>
+      <p>Sandra confirmou: essa é a pergunta mais frequente. Um texto pronto, humano, que liste as atrações com descrição curta e posicione a pousada como ponto central de tudo. Fecha reservas que hoje ficam sem resposta adequada.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- CAMADA 2 -->
+<section class="secao">
+  <div class="secao-header">
+    <span class="label">O que as pessoas realmente compram</span>
+    <h2>Não querem quarto. Querem experiência resolvida.</h2>
+    <p>A pousada vende hospedagem. O hóspede quer roteiro pronto.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <span class="card-tag tag-receita">Ideia</span>
+      <h3>Pacote com nome e itinerário escrito</h3>
+      <p>Um pacote com nome próprio e roteiro detalhado: chegada, pôr do sol, Espetáculo de Som e Luz, café regional, Museu Missioneiro, Fonte Missioneira. O hóspede lê e já se vê lá. Reduz a fricção de decidir e aumenta o ticket.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-receita">Ideia</span>
+      <h3>Parceiro de guia local fixo</h3>
+      <p>A pousada não precisa operar passeio. Mas pode ter um guia local parceiro indicado por padrão. O hóspede paga ao guia, a pousada fica com a reputação de ter resolvido tudo. Custo zero, percepção de valor alta.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-receita">Ideia</span>
+      <h3>PDF de boas-vindas com roteiro sugerido</h3>
+      <p>Enviado pelo WhatsApp no momento da reserva. Cria valor antes do hóspede chegar, reduz dúvidas e gera sensação de cuidado. Quem recebe isso indica para alguém. Custo: uma tarde de trabalho para criar.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- CAMADA 3 -->
+<section class="secao">
+  <div class="secao-header">
+    <span class="label">Novos públicos</span>
+    <h2>Demanda que já existe e ninguém está buscando</h2>
+    <p>Especialmente forte para ocupação de segunda a quinta.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <span class="card-tag tag-receita">B2B</span>
+      <h3>Empresas da região para grupos</h3>
+      <p>Santo Ângelo, Ijuí, Santa Rosa. Confraternizações, retiros de equipe, encontros de liderança. 27 apartamentos e cozinha compartilhada é infraestrutura de grupo. Uma proposta bem feita pode preencher semanas inteiras no meio da semana.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-receita">Turismo de fé</span>
+      <h3>Parceria com igrejas e paróquias</h3>
+      <p>O perfil turismo de fé já existe no público da pousada. Uma carta enviada para paróquias do RS pode gerar grupos para o ano inteiro. Custo quase zero, resultado de longo prazo.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-receita">Agências</span>
+      <h3>Tabela de comissão clara</h3>
+      <p>Uma tabela de 10 a 15% de comissão com material de apoio pronto faz o agente vender sem precisar de esforço da pousada. Simples de criar, resultado contínuo.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-receita">Meio de semana</span>
+      <h3>Pacote "Missões sem pressa"</h3>
+      <p>Segunda a quinta com nome próprio, não promoção. Inclui 2 noites, café regional e ingresso do Espetáculo de Som e Luz. Preço fixo, fácil de anunciar, fácil de vender.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- CAMADA 4 -->
+<section class="secao">
+  <div class="secao-header">
+    <span class="label">Diferenciação</span>
+    <h2>O que já existe mas pode render mais</h2>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <span class="card-tag tag-produto">Produto</span>
+      <h3>Café da manhã como atração</h3>
+      <p>Pão do índio, favo de mel, bolo de butiá. Isso já existe e é diferente. Fotografado e contado do jeito certo, pode viralizar no nicho de turismo gastronômico. Custo zero, resultado orgânico.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-produto">Produto</span>
+      <h3>Kit boas-vindas temático</h3>
+      <p>Algo pequeno na chegada: um papel com a história do lugar, um produto regional, um mapa das atrações. R$5 a R$15 por apartamento. Gera foto espontânea, comentário online e recomendação boca a boca.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="label">Preparado para</span>
+  <h2>Zé Roberto e Afonso</h2>
+  <p>Material preparado com base na reunião presencial, nos dados das campanhas e no feedback da gerente Sandra.</p>
+  <div class="footer-logo">Pousada das Missões · São Miguel das Missões, RS · Patrimônio Mundial da Humanidade</div>
+</footer>
+
+</body>
+</html>
